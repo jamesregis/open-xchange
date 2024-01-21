@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
 
-      - name: Log in to Quay.io
+      - name: Log in to docker.io
         uses: redhat-actions/podman-login@v1
         with:
           username: ${{ env.REGISTRY_USER }}
