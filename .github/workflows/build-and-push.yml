@@ -20,7 +20,9 @@ jobs:
           password: ${{ env.REGISTRY_PASSWORD }}
           registry: ${{ env.IMAGE_REGISTRY }}
 
-      - name: Run build-and-push script
+      - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Run build-and-push script
         run: bash build-and-push.sh
 
