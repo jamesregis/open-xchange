@@ -1,0 +1,101 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: open-xchange
+  name: open-xchange
+spec:
+  containers:
+    - name: mariadb
+      image: docker.io/library/mariadb:latest
+      ports:
+        - containerPort: 3306
+      volumeMounts:
+        - mountPath: /var/lib/mysql:Z
+          name: openxchange-mariadb
+      env:
+        - name: MARIADB_ROOT_PASSWORD
+          value: "root_password"
+        - name: MARIADB_USER
+          value: "openxchange"
+        # - name: MARIADB_DATABASE
+        #   value: "oxdata"
+        - name: MARIADB_PASSWORD
+          value: "db_password"
+    - name: oxspell
+      image: docker.io/jamesregis/open-xchange-spellcheck:latest
+      ports:
+        - containerPort: 8003
+    - name: dcs
+      image: docker.io/jamesregis/open-xchange-dcs:latest
+      ports:
+        - containerPort: 61616
+      env:
+        - name: OX_DCSDB_DB_PASSWORD
+          value: "this-is-my-dcs-password"
+        - name: OX_DCSDB_DB_USER
+          value: dcsdb_user
+        - name: OX_DCSDB_DB_HOST
+          value: "127.0.0.1"
+        - name: OX_DCSDB_DB_ROOT_PASSWORD
+          value: "root_password"
+    - name: appsuite
+      image: docker.io/jamesregis/open-xchange-appsuite:latest
+      ports:
+        - containerPort: 80
+          hostPort: 8080
+      volumeMounts:
+        - mountPath: /ox/etc:Z
+          name: openxchange-etc
+        - mountPath: /var/opt/filestore:Z
+          name: openxchange-share
+        - mountPath: /var/log/open-xchange:Z
+          name: openxchange-logs
+      env:
+        - name: OX_SERVER_MEMORY
+          value: "1024"
+        - name: OX_CONFIG_DATABASE_HOST
+          value: "127.0.0.1"
+        - name: OX_DB_PASSWORD
+          value: openxchange
+        - name: OX_SERVER_NAME
+          value: oxserver
+        - name: OX_ADMIN_MASTER_LOGIN
+          value: "oxadminmaster"
+        - name: OX_ADMIN_MASTER_PASSWORD
+          value: "admin_master_password"
+        - name: OX_DATADIR
+          value: "/ox/store"
+        - name: OX_CONTEXT_ADMIN_EMAIL
+          value: "admin@domain"
+        - name: OX_ADMIN_PASSWORD
+          value: "admin_password"
+        - name: OX_CONTEXT_ADMIN_LOGIN
+          value: "oxadmin"
+        - name: OX_DCSDB_DB_PASSWORD
+          value: "this-is-my-dcs-password"
+        - name: OX_DCSDB_DB_USER
+          value: dcsdb_user
+        - name: OX_DCSDB_DB_HOST
+          value: "127.0.0.1"
+        - name: TZ
+          value: "America/Toronto"
+  restartPolicy: Never
+  volumes:
+    - HostPath:
+        path: /home/james/open-xchange/etc
+        type: Directory
+      name: openxchange-etc
+    - HostPath:
+        path: /home/james/open-xchange/share
+        type: Directory
+      name: openxchange-share
+    - HostPath:
+        path: /home/james/open-xchange/logs
+        type: Directory
+      name: openxchange-logs
+    - HostPath:
+        path: /home/james/open-xchange/mariadb
+        type: Directory
+      name: openxchange-mariadb

@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  appsuite:
+    build: open-xchange-appsuite/
+#    ports:
+#      - "8080:8080"
+  dcs:
+    build: open-xchange-dcs/
+#    ports:
+#      - "61616:61616"
+  spellcheck:
+    build: open-xchange-spellcheck/
+#    ports:
+#      - "8003:8003"
