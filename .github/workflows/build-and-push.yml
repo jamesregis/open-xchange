@@ -1,4 +1,4 @@
-name: Log in to .io
+name: Build and push OpenXchange images
 on:
   push:
 
