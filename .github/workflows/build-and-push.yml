@@ -23,6 +23,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt install python3-pip
+          sudo pip3 install podman-compose
+
       - name: Run build-and-push script
         run: bash build-and-push.sh
 
