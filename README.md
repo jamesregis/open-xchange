@@ -38,7 +38,8 @@ podman kube play --publish-all Pod.yml
 
 ## Example users and context
 
-`create-default-context-and-user.sh` should be run to create a `example context and user` with the following default credentials :
+`create-default-context-and-user.sh` should be run to create an `example context and user` with the following default credentials :
+
 `login: john@example.com` and `password: tototiti001` .
 
 
