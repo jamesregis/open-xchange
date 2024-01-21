@@ -1,0 +1,26 @@
+name: Log in to .io
+on:
+  push:
+
+env:
+  REGISTRY_USER: jamesregis
+  IMAGE_REGISTRY: docker.io
+  REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
+
+jobs:
+  login:
+    name: Log in to image registry
+    runs-on: ubuntu-20.04
+    steps:
+
+      - name: Log in to Quay.io
+        uses: redhat-actions/podman-login@v1
+        with:
+          username: ${{ env.REGISTRY_USER }}
+          password: ${{ env.REGISTRY_PASSWORD }}
+          registry: ${{ env.IMAGE_REGISTRY }}
+
+      - name: Run build-and-push script
+        uses: actions/checkout@v4
+        run: bash build-and-push.sh
+
