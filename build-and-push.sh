@@ -2,7 +2,7 @@
 #
 
 REGISTRY_URL="docker.io/jamesregis"
-#OX_VERSION="7.10.6"
+OX_VERSION="7.10.6"
 
 OX_DCS_CONTAINER="open-xchange-dcs"
 OX_SPELLCHECK_CONTAINER="open-xchange-spellcheck"
