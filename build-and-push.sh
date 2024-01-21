@@ -12,9 +12,9 @@ OX_APPSUITE_CONTAINER="open-xchange-appsuite"
 podman-compose build
 
 # tags images and push
-podman tag localhost/deployment_spellcheck ${REGISTRY_URL}/${OX_SPELLCHECK_CONTAINER}:${OX_VERSION}
-podman tag localhost/deployment_dcs ${REGISTRY_URL}/${OX_DCS_CONTAINER}:${OX_VERSION}
-podman tag localhost/deployment_appsuite ${REGISTRY_URL}/${OX_APPSUITE_CONTAINER}:${OX_VERSION}
+podman tag localhost/open-xchange_spellcheck ${REGISTRY_URL}/${OX_SPELLCHECK_CONTAINER}:${OX_VERSION}
+podman tag localhost/open-xchange_dcs ${REGISTRY_URL}/${OX_DCS_CONTAINER}:${OX_VERSION}
+podman tag localhost/open-xchange_appsuite ${REGISTRY_URL}/${OX_APPSUITE_CONTAINER}:${OX_VERSION}
 
 
 # push images to registry
