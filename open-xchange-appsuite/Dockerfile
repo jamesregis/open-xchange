@@ -1,8 +1,8 @@
 # FROM registry.access.redhat.com/ubi8/ubi:8.9-1028
 FROM docker.io/library/rockylinux:8.9
 
-LABEL vendor=Smartgic.io \
-  io.qanope.maintainer="James Régis <james.regis@qanope.ca>" \
+LABEL vendor=Qanope.io \
+  io.qanope.maintainer="James Régis <james.regis@qanope.io>" \
   io.qanope.image-name="open-xchange-appsuite" \
   io.qanope.is-beta="no" \
   io.qanope.is-production="yes" \
