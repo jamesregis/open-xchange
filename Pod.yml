@@ -82,7 +82,7 @@ spec:
         - name: TZ
           value: "America/Toronto"
         - name: IMAP_SERVER
-          value: "imap.qanope.ca"
+          value: "imap.example.com"
         - name: IMAP_SERVER_PORT
           value: "143"
   restartPolicy: Never
