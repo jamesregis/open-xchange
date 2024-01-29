@@ -196,6 +196,13 @@ sed -i -e "s/com.openexchange.dcs.client.database.userName=.*$/com.openexchange.
 sed -i -e "s/com.openexchange.dcs.client.database.password=.*$/com.openexchange.dcs.client.database.password=$OX_DCSDB_DB_PASSWORD/g" /opt/open-xchange/etc/documents-collaboration-client.properties
 sed -i -e "s/com.openexchange.dcs.client.database.connectionURL=.*$/com.openexchange.dcs.client.database.connectionURL=jdbc:mysql:\/\/$OX_DCSDB_DB_HOST:3306\/dcsdb/g" /opt/open-xchange/etc/documents-collaboration-client.properties
 
+
+# update authentication method
+sed -i -e "s/IMAP_SERVER=.*$/IMAP_SERVER=${IMAP_SERVER}/g" /opt/open-xchange/etc/imapauth.properties
+sed -i -e "/scom.openexchange.mail.filter.server=.*$/com.openexchange.mail.filter.server=imap.recrulink.com/g" /opt/open-xchange/etc/mailfilter.properties
+sed -i -e "s/com.openexchange.mail.mailServer=*.$/com.openexchange.mail.mailServer=imap.recrulink.com:143/g" /opt/open-xchange/etc/mail.properties
+
+
 echo "*** Restarting open-xchange server ***"
 
 export OX_PID=$(ps faux | grep "/bin/bash open-xchange" | grep -v grep | awk '{ print $2 }')

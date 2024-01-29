@@ -81,6 +81,10 @@ spec:
           value: "127.0.0.1"
         - name: TZ
           value: "America/Toronto"
+        - name: IMAP_SERVER
+          value: "imap.qanope.ca"
+        - name: IMAP_SERVER_PORT
+          value: "143"
   restartPolicy: Never
   volumes:
     - HostPath:
