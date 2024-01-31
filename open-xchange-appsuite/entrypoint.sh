@@ -199,9 +199,19 @@ sed -i -e "s/com.openexchange.dcs.client.database.connectionURL=.*$/com.openexch
 
 # update authentication method
 sed -i -e "s/IMAP_SERVER=.*$/IMAP_SERVER=${IMAP_SERVER}/g" /opt/open-xchange/etc/imapauth.properties
-sed -i -e "/scom.openexchange.mail.filter.server=.*$/com.openexchange.mail.filter.server=imap.recrulink.com/g" /opt/open-xchange/etc/mailfilter.properties
-sed -i -e "s/com.openexchange.mail.mailServer=*.$/com.openexchange.mail.mailServer=imap.recrulink.com:143/g" /opt/open-xchange/etc/mail.properties
+sed -i -e "s/IMAP_USE_SECURE=.*$/IMAP_USE_SECURE=${IMAP_USE_SECURE}/g" /opt/open-xchange/etc/imapauth.properties
+sed -i -e "s/IMAP_PORT=.*$/IMAP_PORT=${IMAP_PORT}/g" /opt/open-xchange/etc/imapauth.properties
+sed -i -e "s/com.openexchange.mail.filter.server=.*$/com.openexchange.mail.filter.server=${IMAP_SERVER}/g" /opt/open-xchange/etc/mailfilter.properties
+sed -i -e "s/com.openexchange.mail.loginSource=login/com.openexchange.mail.loginSource=mail/g" /opt/open-xchange/etc/mail.properties
+sed -i -e "s/com.openexchange.mail.mailServerSource=user/com.openexchange.mail.mailServerSource=global/g" /opt/open-xchange/etc/mail.properties
+sed -i -e "s/com.openexchange.mail.transportServerSource=user/com.openexchange.mail.transportServerSource=global/g" /opt/open-xchange/etc/mail.properties
+sed -i -e "s/com.openexchange.mail.mailStartTls=false/com.openexchange.mail.mailStartTls=true/g" /opt/open-xchange/etc/mail.properties
+sed -i -e "s/com.openexchange.mail.transportStartTls=false/com.openexchange.mail.transportStartTls=true/g" /opt/open-xchange/etc/mail.properties
+sed -i -e "s/com.openexchange.mail.mailServer=open-xchange/com.openexchange.mail.mailServer=${IMAP_SERVER}:${IMAP_NON_SSL_PORT}/g" /opt/open-xchange/etc/mail.properties
 
+
+# smtp server
+sed -i -e "s/com.openexchange.mail.transportServer=.*$/com.openexchange.mail.transportServer=${SMTP_SERVER}:${SMTP_PORT}/g" /opt/open-xchange/etc/mail.properties
 
 echo "*** Restarting open-xchange server ***"
 
