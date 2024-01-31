@@ -208,6 +208,18 @@ spec:
               value: "mariadb"
             - name: TZ
               value: "America/Toronto"
+            - name: IMAP_SERVER
+              value: "my-imap-server"
+            - name: IMAP_SERVER_PORT
+              value: "143"
+            - name: IMAP_NON_SSL_PORT
+              value: "143"
+            - name: IMAP_USE_SECURE
+              value: "true"
+            - name: SMTP_SERVER
+              value: "smtp.example.com"
+            - name: SMTP_PORT
+              value: "25"
       volumes:
         - name: share
           persistentVolumeClaim:
