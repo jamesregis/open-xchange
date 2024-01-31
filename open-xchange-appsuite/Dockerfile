@@ -29,7 +29,7 @@ RUN dnf -y install --nogpgcheck \
         open-xchange-appsuite-backend \
         open-xchange-appsuite-help-en-us \
         open-xchange-appsuite-manifest \
-        open-xchange-authentication-database \
+        open-xchange-authentication-imap \
         open-xchange-authorization \
         open-xchange-caldav \
         open-xchange-carddav \
@@ -48,9 +48,9 @@ RUN dnf -y install --nogpgcheck \
         open-xchange-hazelcast \
         open-xchange-hazelcast-community \
         open-xchange-mailstore \
+        open-xchange-mailfilter \
         open-xchange-oauth \
         open-xchange-osgi \
-        open-xchange-passwordchange-database \
         open-xchange-sessionstorage-hazelcast \
         open-xchange-documents-templates \
         open-xchange-smtp \
