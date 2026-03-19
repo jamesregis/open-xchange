@@ -148,15 +148,15 @@ spec:
           ports:
             - containerPort: 80
           volumeMounts:
-            - mountPath: /ox/etc
-              name: share
-              readOnly: false
-              subPath: ox-appsuite/etc
+            #- mountPath: /ox/etc
+            #  name: share
+            #  readOnly: false
+            #  subPath: ox-appsuite/etc
             - mountPath: /var/opt/filestore
               name: share
               subPath: ox-appsuite/data
-            # - mountPath: /opt/open-xchange/etc
-            #   name: etc
+            - mountPath: /opt/open-xchange/etc
+              name: etc
             # - mountPath: /opt/open-xchange/appsuite/apps/themes
             #   name: share
             #   subPath: ox-appsuite/themes
@@ -227,9 +227,9 @@ spec:
         - name: logs
           persistentVolumeClaim:
             claimName: ox-logs
-        # - name: etc
-        #   persistentVolumeClaim:
-        #     claimName: ox-etc
+        - name: etc
+          persistentVolumeClaim:
+            claimName: ox-etc
         - name: ox-db-password
           secret:
             secretName: ox-db-password
