@@ -49,7 +49,7 @@ echo "CONTEXT_ID=${OX_CONTEXT_ID}"
 
 # check if DB_HOST is reachable before proceed
 while ! nc -z $OX_CONFIG_DATABASE_HOST 3306; do
-  echo -e "${BRed}*** This container cannot reach DB host $OX_CONFIG_DATABASE_HOST ***${NC}"
+	echo -e "${BRed}*** This container (appsuite) cannot reach DB host $OX_CONFIG_DATABASE_HOST ***${NC}"
   sleep 10
 done
 
@@ -209,14 +209,17 @@ sed -i -e "s/com.openexchange.mail.mailStartTls=false/com.openexchange.mail.mail
 sed -i -e "s/com.openexchange.mail.transportStartTls=false/com.openexchange.mail.transportStartTls=true/g" /opt/open-xchange/etc/mail.properties
 sed -i -e "s/com.openexchange.mail.mailServer=open-xchange/com.openexchange.mail.mailServer=${IMAP_SERVER}:${IMAP_NON_SSL_PORT}/g" /opt/open-xchange/etc/mail.properties
 
-
 # smtp server
 sed -i -e "s/com.openexchange.mail.transportServer=.*$/com.openexchange.mail.transportServer=${SMTP_SERVER}:${SMTP_PORT}/g" /opt/open-xchange/etc/mail.properties
 
+# configuration for sieve filter
+sed -i -e "s/com.openexchange.mail.filter.credentialSource=session/com.openexchange.mail.filter.credentialSource=mail/g" /opt/open-xchange/etc/mailfilter.properties
+
+
 echo "*** Restarting open-xchange server ***"
 
-export OX_PID=$(ps faux | grep "/bin/bash open-xchange" | grep -v grep | awk '{ print $2 }')
-export OX_CHILD_PID=$(pgrep -laP $OX_PID | awk '{ print $1 }')
+export OX_PID=$(/usr/bin/ps faux | grep "/bin/bash open-xchange" | grep -v grep | awk '{ print $2 }')
+export OX_CHILD_PID=$(/usr/bin/pgrep -laP $OX_PID | awk '{ print $1 }')
 
 # kil all OX process and childs
 for ox_child_pid in $OX_CHILD_PID; do
