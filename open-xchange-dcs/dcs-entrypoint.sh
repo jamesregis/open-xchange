@@ -20,7 +20,7 @@ OX_DCSDB_DB_HOST=${OX_DCSDB_DB_HOST:-"mariadb"}
 
 # check if DB_HOST is reachable before proceed
 while ! nc -z $OX_DCSDB_DB_HOST 3306; do
-  echo -e "${BRed}*** This container cannot reach DB host $OX_DCSDB_DB_HOST ***${NC}"
+  echo -e "${BRed}*** This container (dcs) cannot reach DB host $OX_DCSDB_DB_HOST ***${NC}"
   sleep 5
 done
 
