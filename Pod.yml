@@ -16,7 +16,7 @@ spec:
           name: openxchange-mariadb
       env:
         - name: MARIADB_ROOT_PASSWORD
-          value: "root_password"
+          value: "lohyiuNiu9eaL8Iekoom"
         - name: MARIADB_USER
           value: "openxchange"
         # - name: MARIADB_DATABASE
@@ -39,7 +39,7 @@ spec:
         - name: OX_DCSDB_DB_HOST
           value: "127.0.0.1"
         - name: OX_DCSDB_DB_ROOT_PASSWORD
-          value: "root_password"
+          value: "lohyiuNiu9eaL8Iekoom"
     - name: appsuite
       image: docker.io/jamesregis/open-xchange-appsuite:7.10.6
       ports:
