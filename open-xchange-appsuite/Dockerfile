@@ -15,7 +15,7 @@ ARG OX_UID=2061
 
 RUN dnf -y install epel-release && \
     dnf -y update && \
-    dnf -y install -y httpd gnupg nc wget && \
+    dnf -y install -y httpd gnupg nc wget grep procps-ng && \
     dnf -y clean all && rm -fr /var/log/*
 
 COPY open-xchange.repo /etc/yum.repos.d/open-xchange.repo
