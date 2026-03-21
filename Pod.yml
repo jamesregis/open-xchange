@@ -38,7 +38,7 @@ spec:
           value: dcsdb_user
         - name: OX_DCSDB_DB_HOST
           value: "127.0.0.1"
-        - name: OX_DCSDB_DB_ROOT_PASSWORD
+        - name: OX_CONFIG_DATABASE_ROOT_PASSWORD
           value: "lohyiuNiu9eaL8Iekoom"
     - name: appsuite
       image: docker.io/jamesregis/open-xchange-appsuite:7.10.6
@@ -55,10 +55,14 @@ spec:
       env:
         - name: OX_SERVER_MEMORY
           value: "1024"
+        - name: OX_CONFIG_DATABASE_USER
+          value: "openxchange"
         - name: OX_CONFIG_DATABASE_HOST
           value: "127.0.0.1"
-        - name: OX_DB_PASSWORD
+        - name: OX_CONFIG_DATABASE_PASSWORD
           value: openxchange
+        - name: OX_CONFIG_DATABASE_ROOT_PASSWORD
+          value: "lohyiuNiu9eaL8Iekoom"        
         - name: OX_SERVER_NAME
           value: oxserver
         - name: OX_ADMIN_MASTER_LOGIN
@@ -69,7 +73,7 @@ spec:
           value: "/ox/store"
         - name: OX_CONTEXT_ADMIN_EMAIL
           value: "admin@domain"
-        - name: OX_ADMIN_PASSWORD
+        - name: OX_CONTEXT_ADMIN_PASSWORD
           value: "admin_password"
         - name: OX_CONTEXT_ADMIN_LOGIN
           value: "oxadmin"
