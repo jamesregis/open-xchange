@@ -32,7 +32,6 @@ ENV OX_ADMIN_MASTER_LOGIN=oxadminmaster \
     OX_SERVER_MEMORY="1024" \
     TZ="America/Toronto"
 
-
 RUN dnf -y install epel-release && \
     dnf -y update && \
     dnf -y install -y httpd gnupg nc wget && \
@@ -48,7 +47,6 @@ RUN dnf -y install --nogpgcheck \
 	httpd \
 	iproute && \
     dnf -y clean all && rm -fr /var/log/*
-
 
 COPY dcs-entrypoint.sh /usr/local/bin/dcs-entrypoint.sh
 ENTRYPOINT /usr/local/bin/dcs-entrypoint.sh
