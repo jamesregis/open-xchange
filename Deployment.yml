@@ -174,13 +174,13 @@ spec:
               mountPath: /run/secrets/ox-master-password
               subPath: ox-master-password
           env:
-            - name: OX_CONFIG_DB_HOST
+            - name: OX_CONFIG_DATABASE_HOST
               value: "mariadb"
             - name: OX_SERVER_MEMORY
               value: "1024"
             # - name: OX_CONFIG_DB_NAME
             #   value: oxdata
-            - name: OX_DB_PASSWORD
+            - name: OX_CONFIG_DATABASE_PASSWORD
               value: "db_password"
             - name: OX_CONFIG_DATABASE_USER
               value: openxchange
@@ -196,7 +196,7 @@ spec:
               value: "/var/opt/filestore"
             - name: OX_CONTEXT_ADMIN_EMAIL
               value: "admin@domain"
-            - name: OX_ADMIN_PASSWORD
+            - name: OX_CONTEXT_ADMIN_PASSWORD
               value: "admin_password"
             - name: OX_CONTEXT_ADMIN_LOGIN
               value: "oxadmin"
