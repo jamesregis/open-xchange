@@ -16,13 +16,13 @@ spec:
           name: openxchange-mariadb
       env:
         - name: MARIADB_ROOT_PASSWORD
-          value: "lohyiuNiu9eaL8Iekoom"
+          value: "mariadb_root_password"
         - name: MARIADB_USER
           value: "openxchange"
-        # - name: MARIADB_DATABASE
-        #   value: "oxdata"
+        - name: MARIADB_DATABASE
+          value: "configdb"
         - name: MARIADB_PASSWORD
-          value: "db_password"
+          value: "mariadb_password"
     - name: oxspell
       image: docker.io/jamesregis/open-xchange-spellcheck:7.10.6
       ports:
@@ -33,13 +33,13 @@ spec:
         - containerPort: 61616
       env:
         - name: OX_DCSDB_DB_PASSWORD
-          value: "this-is-my-dcs-password"
+          value: "dcs-database-password"
         - name: OX_DCSDB_DB_USER
           value: dcsdb_user
         - name: OX_DCSDB_DB_HOST
           value: "127.0.0.1"
         - name: OX_CONFIG_DATABASE_ROOT_PASSWORD
-          value: "lohyiuNiu9eaL8Iekoom"
+          value: "mariadb_root_password"
     - name: appsuite
       image: docker.io/jamesregis/open-xchange-appsuite:7.10.6
       ports:
@@ -60,9 +60,9 @@ spec:
         - name: OX_CONFIG_DATABASE_HOST
           value: "127.0.0.1"
         - name: OX_CONFIG_DATABASE_PASSWORD
-          value: openxchange
+          value: "mariadb_password"
         - name: OX_CONFIG_DATABASE_ROOT_PASSWORD
-          value: "lohyiuNiu9eaL8Iekoom"        
+          value: "mariadb_root_password"
         - name: OX_SERVER_NAME
           value: oxserver
         - name: OX_ADMIN_MASTER_LOGIN
@@ -78,7 +78,7 @@ spec:
         - name: OX_CONTEXT_ADMIN_LOGIN
           value: "oxadmin"
         - name: OX_DCSDB_DB_PASSWORD
-          value: "this-is-my-dcs-password"
+          value: "dcs-database-password"
         - name: OX_DCSDB_DB_USER
           value: dcsdb_user
         - name: OX_DCSDB_DB_HOST
