@@ -14,7 +14,7 @@ UBlue='\033[4;34m'
 CONTEXT_NAME="Example Context"
 DOMAIN="example.com"
 
-OX_ADMIN_MASTER_PASSWORD=`yq e '.spec.containers[] | select (.name=="appsuite").env[] | select (.name=="OX_CONTEXT_ADMIN_PASSWORD") | .value' Pod.yml`
+OX_ADMIN_MASTER_PASSWORD=`yq e '.spec.containers[] | select (.name=="appsuite").env[] | select (.name=="OX_ADMIN_MASTER_PASSWORD") | .value' Pod.yml`
 OX_CONTEXT_ADMIN_PASSWORD=`yq e '.spec.containers[] | select (.name=="appsuite").env[] | select (.name=="OX_CONTEXT_ADMIN_PASSWORD") | .value' Pod.yml`
 
 echo -e "${BRed} Create a new context ... ${NC}\n"
