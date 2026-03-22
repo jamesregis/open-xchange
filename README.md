@@ -31,7 +31,7 @@ Before launching the container, you must first:
 ```
 
 ‼️IMPORTANT‼️
-s
+
 Run `update-password.sh` to customize your own password in `Pod.yml` file.
 
 ```
