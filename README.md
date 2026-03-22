@@ -30,7 +30,15 @@ Before launching the container, you must first:
       name: openxchange-mariadb
 ```
 
-Once done, you should be able to run this command: 
+‼️IMPORTANT‼️
+s
+Run `update-password.sh` to customize your own password in `Pod.yml` file.
+
+```
+sh update-password.sh
+```
+
+Once done, you should be able to run this command:
 
 ```
 podman kube play --publish-all Pod.yml
