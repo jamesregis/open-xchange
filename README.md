@@ -17,7 +17,7 @@ Before launching the container, you must first:
         type: Directory
       name: openxchange-etc
     - HostPath:
-        path: /home/user/open-xchange/share
+        path: /home/user/open-xchange/sharew
         type: Directory
       name: openxchange-share
     - HostPath:
@@ -41,7 +41,7 @@ sh update-password.sh
 Once done, you should be able to run this command:
 
 ```
-podman kube play --publish-all Pod.yml
+podman kube play Pod.yml
 ```
 
 ## Example users and context
