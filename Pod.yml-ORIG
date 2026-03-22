@@ -16,13 +16,13 @@ spec:
           name: openxchange-mariadb
       env:
         - name: MARIADB_ROOT_PASSWORD
-          value: "7Xb27Plrr8ppZrjKUtoo3jGF854ufpbd"
+          value: "root_password"
         - name: MARIADB_USER
           value: "openxchange"
-        - name: MARIADB_DATABASE
-          value: "configdb"
+        # - name: MARIADB_DATABASE
+        #   value: "oxdata"
         - name: MARIADB_PASSWORD
-          value: "KKbDqg6upefFCJ6sZhOAMiKobT5oRHRd"
+          value: "db_password"
     - name: oxspell
       image: docker.io/jamesregis/open-xchange-spellcheck:7.10.6
       ports:
@@ -33,13 +33,13 @@ spec:
         - containerPort: 61616
       env:
         - name: OX_DCSDB_DB_PASSWORD
-          value: "CxmUA6tlANZ34Vy5gT3TVaZBVYqQwlsi"
+          value: "this-is-my-dcs-password"
         - name: OX_DCSDB_DB_USER
           value: dcsdb_user
         - name: OX_DCSDB_DB_HOST
           value: "127.0.0.1"
-        - name: OX_CONFIG_DATABASE_ROOT_PASSWORD
-          value: "7Xb27Plrr8ppZrjKUtoo3jGF854ufpbd"
+        - name: OX_DCSDB_DB_ROOT_PASSWORD
+          value: "root_password"
     - name: appsuite
       image: docker.io/jamesregis/open-xchange-appsuite:7.10.6
       ports:
@@ -55,30 +55,26 @@ spec:
       env:
         - name: OX_SERVER_MEMORY
           value: "1024"
-        - name: OX_CONFIG_DATABASE_USER
-          value: "openxchange"
         - name: OX_CONFIG_DATABASE_HOST
           value: "127.0.0.1"
         - name: OX_CONFIG_DATABASE_PASSWORD
-          value: "KKbDqg6upefFCJ6sZhOAMiKobT5oRHRd"
-        - name: OX_CONFIG_DATABASE_ROOT_PASSWORD
-          value: "7Xb27Plrr8ppZrjKUtoo3jGF854ufpbd"
+          value: openxchange
         - name: OX_SERVER_NAME
           value: oxserver
         - name: OX_ADMIN_MASTER_LOGIN
           value: "oxadminmaster"
         - name: OX_ADMIN_MASTER_PASSWORD
-          value: "cFFOEsvhTGs1hnvqOntpMINn"
+          value: "admin_master_password"
         - name: OX_DATADIR
           value: "/ox/store"
         - name: OX_CONTEXT_ADMIN_EMAIL
           value: "admin@domain"
         - name: OX_CONTEXT_ADMIN_PASSWORD
-          value: "tpcHy40zTBGWCf0vIWvGmmEQ"
+          value: "admin_password"
         - name: OX_CONTEXT_ADMIN_LOGIN
           value: "oxadmin"
         - name: OX_DCSDB_DB_PASSWORD
-          value: "CxmUA6tlANZ34Vy5gT3TVaZBVYqQwlsi"
+          value: "this-is-my-dcs-password"
         - name: OX_DCSDB_DB_USER
           value: dcsdb_user
         - name: OX_DCSDB_DB_HOST
